@@ -26,6 +26,10 @@ public class OrderTest {
                 {new String[]{"BLACK", "GREY"}}
         };
     }
+    //Алеся, помогите пожалуйста, на уроках по параметризованным тестам, мы не создавали массив строк отдельно new String[],
+    // а здесь помогло только добавление new String[] перед аргументами. Где можно подробее про это почитать ?
+    //на уроке было так, что сейчас приводит к ошибке missing argument:  public static Object[][] getTextData() {
+    //        return new Object[][] { {"test ", "test"} }; }
     @Before
     public void setUp() {
         orderClient = new OrderClient();
