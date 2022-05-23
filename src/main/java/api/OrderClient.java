@@ -1,16 +1,19 @@
-package courier;
+package api;
+import courier.Order;
+import courier.Orders;
+import static org.apache.http.HttpStatus.SC_CREATED;
 
 public class OrderClient extends RestAssuredClient {
     private final String ROOT = "/orders";
 
-    public int create(Order order){
+    public int createNewOrder(Order order){
         return  reqSpec
                 .body(order)
                 .post(ROOT)
                 .then()
                 .log().all()
                 .assertThat()
-                .statusCode(201)
+                .statusCode(SC_CREATED)
                 .extract()
                 .path("track");
     }
@@ -22,8 +25,9 @@ public class OrderClient extends RestAssuredClient {
             .then()
             .log().all()
             .assertThat()
-            .statusCode(200)
+            .statusCode(SC_CREATED)
             .extract()
             .path("track");
     }
+
 }
