@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 //import io.qameta.allure.junit4.DisplayName;
 
 public class CourierCreateTest {
+
     private CourierClient courierClient;
-    private int courierId;
     private String messageWithError;
 
     @Before
@@ -17,10 +17,11 @@ public class CourierCreateTest {
     @Test
     //@DisplayName("Check courier add method With all Params")
     public void checkCreateCourier(){
-        Courier courier = new Courier("Ibyrai_science", "qwerty12", "Altynsarin");
+        Courier courier = new Courier("Ibyrai_science1", "qwerty12", "Altynsarin");
         boolean createCourier = courierClient.createCourier(courier, 201, "ok");
         assertTrue(createCourier);
     }
+
     @Test
     //DisplayName("Check courier add method With dublicate params")
     public void checkCreateCourierWithSameParams(){
@@ -29,8 +30,8 @@ public class CourierCreateTest {
             System.out.println(messageWithError);
             assertEquals("Этот логин уже используется. Попробуйте другой.", messageWithError);
             System.out.println("----------");
-
     }
+
     @Test
     //@DisplayName("Check courier add method Without Login")
     public void checkCreateCourierWithNoLogin() {
@@ -38,6 +39,7 @@ public class CourierCreateTest {
         String emptyLoginCourier = courierClient.processCourier(courier, 400, "\"message\"");
         assertEquals("Недостаточно данных для создания учетной записи", emptyLoginCourier);
     }
+
     @Test
     //@DisplayName("Check courier add method Without Pass")
     public void checkCreateCourierWithNoPass() {

@@ -6,19 +6,20 @@ import static org.junit.Assert.*;
 //import io.qameta.allure.junit4.DisplayName;
 
 public class CourierLoginTest {
+
     private CourierClient courierClient;
     private int courierId;
-    private String messageWithError;
 
     @Before
     public void setUp() {
         courierClient = new CourierClient();
     }
-     @Test
+
+    @Test
     //DisplayName("Check courier Login method")
     public void checkLoginCourier(){
         try{
-            Courier courier = new Courier("Ibyrai_science", "qwerty12", "Altynsarin");
+            Courier courier = new Courier("Ibyrai_science1", "qwerty12", "Altynsarin");
             CourierCredentials cred = CourierCredentials.from(courier);
             courierId = courierClient.loginCourier(cred, 200, "id");
             assertNotEquals(0, courierId);
@@ -31,6 +32,7 @@ public class CourierLoginTest {
             System.out.println("-----------");
         }
     }
+
     @Test
     //DisplayName("Check courier Login method Without Pass")
     public void checkLoginCourierWithoutPass(){
@@ -39,6 +41,7 @@ public class CourierLoginTest {
         String courierIdNotFound = courierClient.loginCourierWithWrongParams(cred, 400, "\"message\"");
         assertEquals("Недостаточно данных для входа", courierIdNotFound);
     }
+
     @Test
     //DisplayName("Check courier With Wrong Params")
     public void checkLoginCourierWithWrongParams(){

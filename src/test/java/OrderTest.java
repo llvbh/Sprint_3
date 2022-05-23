@@ -1,10 +1,11 @@
+import courier.Orders;
+import courier.Order;
 import api.OrderClient;
-import courier.*;
-//import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
 import static org.junit.Assert.assertNotEquals;
 
 @RunWith(Parameterized.class)

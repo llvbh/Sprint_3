@@ -1,13 +1,16 @@
 package api;
+
 import courier.Order;
 import courier.Orders;
+
 import static org.apache.http.HttpStatus.SC_CREATED;
 
 public class OrderClient extends RestAssuredClient {
+
     private final String ROOT = "/orders";
 
     public int createNewOrder(Order order){
-        return  reqSpec
+        return reqSpec
                 .body(order)
                 .post(ROOT)
                 .then()
@@ -29,5 +32,4 @@ public class OrderClient extends RestAssuredClient {
             .extract()
             .path("track");
     }
-
 }

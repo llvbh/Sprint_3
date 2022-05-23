@@ -1,4 +1,5 @@
 package api;
+
 import courier.Courier;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,8 +17,8 @@ public class CourierCredentials {
         this.login = courier.getLogin();
         this.password = courier.getPassword();
     }
+
     public static CourierCredentials from(Courier courier){
         return new CourierCredentials(courier);
     }
-
 }
