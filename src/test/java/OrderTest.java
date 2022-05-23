@@ -1,6 +1,7 @@
 import courier.Orders;
 import courier.Order;
 import api.OrderClient;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,17 +31,17 @@ public class OrderTest {
         orderClient = new OrderClient();
     }
     @Test
-    //@DisplayName("Check create new order")
+    @DisplayName("Check create new order")
     public void createNewOrder() {
-        Order order = new Order("firstName", "lastName", "address", "metroStation", "88888888", 87,  "12.08.12", "DDDcomment", color);
-        orderId = orderClient.createNewOrder(order);
+        Order order = new Order("Beckham1", "Beckham1", "address", "metroStation", "88888888", 87,  "12.08.12", "DDDcomment", color);
+        orderId = orderClient.createNewOrder(order, 201, "track");
         assertNotEquals(0, orderId);
     }
     @Test
-    //@DisplayName("Get all orders")
+    @DisplayName("Get all orders")
     public void getAllOrders(){
         Orders  orders = new Orders();
-        Orders ordersList = orderClient.getAllOrders(orders);
+        Orders ordersList = orderClient.getAllOrders(orders, 200, "track");
         assertNotEquals(0, ordersList);
     }
 }

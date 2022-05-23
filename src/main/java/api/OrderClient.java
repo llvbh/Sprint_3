@@ -9,27 +9,27 @@ public class OrderClient extends RestAssuredClient {
 
     private final String ROOT = "/orders";
 
-    public int createNewOrder(Order order){
+    public int createNewOrder(Order order, int statusCode, String responseMessage){
         return reqSpec
                 .body(order)
                 .post(ROOT)
                 .then()
                 .log().all()
                 .assertThat()
-                .statusCode(SC_CREATED)
+                .statusCode(statusCode)
                 .extract()
-                .path("track");
+                .path(responseMessage);
     }
 
-    public Orders getAllOrders(Orders orders){
+    public Orders getAllOrders(Orders orders, int statusCode, String responseMessage ){
         return reqSpec
             .body(orders)
             .get(ROOT)
             .then()
             .log().all()
             .assertThat()
-            .statusCode(SC_CREATED)
+            .statusCode(statusCode)
             .extract()
-            .path("track");
+            .path(responseMessage);
     }
 }

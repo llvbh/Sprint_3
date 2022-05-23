@@ -3,7 +3,7 @@ import courier.Courier;
 import api.CourierCredentials;
 import org.junit.*;
 import static org.junit.Assert.*;
-//import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.junit4.DisplayName;
 
 public class CourierLoginTest {
 
@@ -16,7 +16,7 @@ public class CourierLoginTest {
     }
 
     @Test
-    //DisplayName("Check courier Login method")
+    @DisplayName("Check courier Login method")
     public void checkLoginCourier(){
         try{
             Courier courier = new Courier("Ibyrai_science1", "qwerty12", "Altynsarin");
@@ -25,16 +25,12 @@ public class CourierLoginTest {
             assertNotEquals(0, courierId);
         }
         finally{
-            System.out.println("+++++++++++");
-            System.out.println(courierId);
             if(courierId > 0) {courierClient.deleteCourier(courierId, 200);}
-
-            System.out.println("-----------");
         }
     }
 
     @Test
-    //DisplayName("Check courier Login method Without Pass")
+    @DisplayName("Check courier Login method Without Pass")
     public void checkLoginCourierWithoutPass(){
         Courier courier = new Courier("Ibyrai", "", "Altynsarin");
         CourierCredentials cred = CourierCredentials.from(courier);
@@ -43,7 +39,7 @@ public class CourierLoginTest {
     }
 
     @Test
-    //DisplayName("Check courier With Wrong Params")
+    @DisplayName("Check courier With Wrong Params")
     public void checkLoginCourierWithWrongParams(){
         Courier courier = new Courier("Ddd123", "1234", "Dick");
         CourierCredentials cred = CourierCredentials.from(courier);
